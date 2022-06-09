@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Services\UserService;
+use App\Services\UsersService;
 use Exception;
 use Illuminate\Http\Request;
 
 class Users extends Controller
 {
 
-    public function __construct ( UserService $usuario_service )
+    public function __construct ( UsersService $users_service )
     {
-        $this->usuario_service = $usuario_service;
+        $this->users_service = $users_service;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +21,17 @@ class Users extends Controller
      */
     public function index()
     {
-        //
+        try {
+        
+            $users = $this->users_service->getUsers();
+
+            return response()->json(["data" => $users], 200);
+        
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+
+        }
     }
 
     /**
@@ -51,11 +61,11 @@ class Users extends Controller
      * @param  int  $codigo_usuario
      * @return \Illuminate\Http\Response
      */
-    public function show($codigo_usuario)
+    public function show($user_id)
     {
         try {
         
-            $usuario = $this->usuario_service->getUsuario( $codigo_usuario );
+            $usuario = $this->users_service->getUser( $user_id );
 
             return response()->json(["data" => $usuario], 200);
         
