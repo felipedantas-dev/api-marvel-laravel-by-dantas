@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\api\Users;
+use App\Http\Controllers\api\MarvelController;
+use App\Http\Controllers\api\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->apiResource('users', Users::class);
+Route::middleware('auth:api')->apiResource('users', UsersController::class);
+
+
+Route::middleware('auth:api')
+->prefix('marvel')
+->controller(MarvelController::class)
+->group(function() {
+
+    Route::post('comics', 'comics');
+    Route::post('characters', 'characters');
+    Route::post('character', 'character');
+
+});

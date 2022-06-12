@@ -7,7 +7,7 @@ use App\Services\UsersService;
 use Exception;
 use Illuminate\Http\Request;
 
-class Users extends Controller
+class UsersController extends Controller
 {
 
     public function __construct ( UsersService $users_service )
