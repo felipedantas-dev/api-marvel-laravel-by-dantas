@@ -15,6 +15,7 @@ class MarvelController extends Controller
         $this->marvel_service = $marvel_service;
     }
 
+
     public function comics(Request $request)
     {
 
@@ -22,7 +23,7 @@ class MarvelController extends Controller
 
             $comics = $this->marvel_service->getComics($request->input());
 
-            return response()->json(["data" => $comics], 200);
+            return response()->json(["data" => $comics->data->results], 200);
         
         } catch (Exception $e) {
 
@@ -30,6 +31,58 @@ class MarvelController extends Controller
 
         }
     }
+
+
+    public function events(Request $request)
+    {
+
+        try {
+
+            $events = $this->marvel_service->getEvents($request->input());
+
+            return response()->json(["data" => $events->data->results], 200);
+        
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+
+        }
+    }
+
+
+    public function stories(Request $request)
+    {
+
+        try {
+
+            $stories = $this->marvel_service->getStories($request->input());
+
+            return response()->json(["data" => $stories->data->results], 200);
+        
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+
+        }
+    }
+
+
+    public function series(Request $request)
+    {
+
+        try {
+
+            $series = $this->marvel_service->getSeries($request->input());
+
+            return response()->json(["data" => $series->data->results], 200);
+        
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+
+        }
+    }
+    
 
     public function characters(Request $request)
     {
@@ -38,7 +91,7 @@ class MarvelController extends Controller
 
             $characters = $this->marvel_service->getCharacters($request->input());
 
-            return response()->json(["data" => $characters], 200);
+            return response()->json(["data" => $characters->data->results], 200);
         
         } catch (Exception $e) {
 
@@ -47,6 +100,7 @@ class MarvelController extends Controller
         }
     }
 
+    
     public function character(Request $request)
     {
 
@@ -54,7 +108,7 @@ class MarvelController extends Controller
 
             $character = $this->marvel_service->getCharacter($request->input());
 
-            return response()->json(["data" => $character], 200);
+            return response()->json(["data" => $character->data->results], 200);
         
         } catch (Exception $e) {
 
@@ -63,4 +117,63 @@ class MarvelController extends Controller
         }
     }
 
+
+    public function characterComics(Request $request, $id)
+    {
+
+        try {
+
+            $comics = $this->marvel_service->getCharacterComics($request->input(), $id);
+            return response()->json(["data" => $comics->data->results], 200);
+
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+
+    public function characterEvents(Request $request, $id)
+    {
+        
+        try {
+
+            $events = $this->marvel_service->getCharacterEvents($request->input(), $id);
+            return response()->json(["data" => $events->data->results], 200);
+
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+
+    public function characterStories(Request $request, $id)
+    {
+        
+        try {
+
+            $stories = $this->marvel_service->getCharacterStories($request->input(), $id);
+            return response()->json(["data" => $stories->data->results], 200);
+
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
+
+
+    public function characterSeries(Request $request, $id)
+    {
+        
+        try {
+
+            $series = $this->marvel_service->getCharacterSeries($request->input(), $id);
+            return response()->json(["data" => $series->data->results], 200);
+
+        } catch (Exception $e) {
+
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+    }
 }

@@ -24,7 +24,15 @@ Route::middleware('auth:api')
 ->group(function() {
 
     Route::post('comics', 'comics');
+    Route::post('events', 'events');
+    Route::post('stories', 'stories');
+    Route::post('series', 'series');
+
     Route::post('characters', 'characters');
     Route::post('character', 'character');
+    Route::post('character/{id}/comics', 'characterComics');
+    Route::post('character/{id}/events', 'characterEvents');
+    Route::post('character/{id}/stories', 'characterStories');
+    Route::post('character/{id}/series', 'characterSeries');
 
 });
