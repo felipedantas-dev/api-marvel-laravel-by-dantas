@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\api\MarvelController;
-use App\Http\Controllers\api\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->apiResource('users', UsersController::class);
-
-
-Route::middleware('auth:api')
-->prefix('marvel')
+Route::prefix('marvel')
 ->controller(MarvelController::class)
 ->group(function() {
 

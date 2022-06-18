@@ -15,7 +15,11 @@ class MarvelController extends Controller
         $this->marvel_service = $marvel_service;
     }
 
-
+    /**
+     * Display a listing of the comics.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function comics(Request $request)
     {
 
@@ -32,7 +36,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the events.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function events(Request $request)
     {
 
@@ -49,7 +57,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the stories.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function stories(Request $request)
     {
 
@@ -66,7 +78,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the series.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function series(Request $request)
     {
 
@@ -83,7 +99,11 @@ class MarvelController extends Controller
         }
     }
     
-
+    /**
+     * Display a listing of the characters.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function characters(Request $request)
     {
 
@@ -100,7 +120,11 @@ class MarvelController extends Controller
         }
     }
 
-    
+    /**
+     * Display the character.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function character(Request $request)
     {
 
@@ -117,7 +141,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the characters comics.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function characterComics(Request $request, $id)
     {
 
@@ -132,7 +160,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the characters events.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function characterEvents(Request $request, $id)
     {
         
@@ -147,7 +179,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the characters stories.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function characterStories(Request $request, $id)
     {
         
@@ -162,7 +198,11 @@ class MarvelController extends Controller
         }
     }
 
-
+    /**
+     * Display a listing of the characters series.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function characterSeries(Request $request, $id)
     {
         
